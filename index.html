@@ -2,17 +2,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Website AI Mod Neon</title>
 
 <style>
-body {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -36,14 +37,22 @@ body::after {
   z-index: -1;
 }
 
+/* Container 9:16 */
+.wrapper {
+  width: 360px;
+  height: 640px; /* 9:16 ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Neon Glass Card */
 .card {
+  width: 90%;
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(15px);
-  padding: 35px;
+  padding: 30px;
   border-radius: 25px;
-  max-width: 380px;
-  width: 90%;
   text-align: center;
   border: 2px solid #ff4da6;
   box-shadow:
@@ -54,8 +63,8 @@ body::after {
 
 /* Profile */
 img {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: 3px solid #ff66b2;
   margin-bottom: 15px;
@@ -63,7 +72,7 @@ img {
 
 /* Title Glow */
 .glow {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #ff99cc;
   animation: glowText 2s infinite alternate;
@@ -92,14 +101,13 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* Output Text */
+/* Output */
 #output {
   margin-top: 25px;
-  font-size: 15px;
+  font-size: 14px;
   color: #ffffff;
-  min-height: 30px;
+  min-height: 40px;
   font-weight: bold;
-  letter-spacing: 1px;
   text-shadow: 0 0 10px #ff99cc;
 }
 </style>
@@ -107,16 +115,20 @@ button:hover {
 </head>
 <body>
 
-<div class="card">
-  <img src="https://files.catbox.moe/dx9or2.jpg" alt="Profile">
+<div class="wrapper">
+  <div class="card">
 
-  <div class="glow">
-    WEBSITE INI DIBUAT OLEH AI DENGAN IDE MOD
+    <img src="https://files.catbox.moe/dx9or2.jpg" alt="Profile">
+
+    <div class="glow">
+      WEBSITE INI DIBUAT OLEH AI DENGAN IDE MOD
+    </div>
+
+    <button onclick="kataImut()">Klik Aku 💖</button>
+
+    <div id="output"></div>
+
   </div>
-
-  <button onclick="kataImut()">Klik Aku 💖</button>
-
-  <div id="output"></div>
 </div>
 
 <script>
@@ -125,10 +137,10 @@ const kata = [
 "Semoga harimu sehangat matahari pagi 🌞",
 "Jangan lupa minum air yaa 💧",
 "Kalau capek, istirahat dulu ya 🌸",
-"Kamu lebih keren dari yang kamu kira ",
+"Kamu lebih keren dari yang kamu kira 💕",
 "Senyum kamu manis banget 😊",
 "Hari ini pasti ada hal kecil yang bikin kamu bahagia ✨",
-"Kamu nggak sendirian kok ",
+"Kamu nggak sendirian kok 🤍",
 "Langit aja cantik, apalagi kamu ☁️",
 "Terima kasih sudah jadi diri kamu 🌷",
 "Besok pasti lebih cerah 💫",
@@ -139,7 +151,7 @@ const kata = [
 "Kamu itu menggemaskan tau nggak 🐣",
 "Dunia lebih indah kalau kamu senyum 🌼",
 "Semoga harimu penuh hal manis 🍭",
-"Kamu itu cukup, selalu cukup "
+"Kamu itu cukup, selalu cukup 🤍"
 ];
 
 function kataImut() {
@@ -149,13 +161,12 @@ function kataImut() {
   typeWriter(output, random, 0);
 }
 
-/* Typewriter */
 function typeWriter(element, text, i) {
   if (i < text.length) {
     element.innerHTML += text.charAt(i);
     setTimeout(function() {
       typeWriter(element, text, i + 1);
-    }, 45);
+    }, 40);
   }
 }
 </script>
