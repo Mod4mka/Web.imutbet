@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Website AI Mod Neon</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background GIF */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("https://files.catbox.moe/hy1osk.gif") no-repeat center center/cover;
+  z-index: -2;
+}
+
+/* Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+/* Neon Glass Card */
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding: 35px;
+  border-radius: 25px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  border: 2px solid #ff4da6;
+  box-shadow:
+    0 0 10px #ff4da6,
+    0 0 20px #ff4da6,
+    0 0 40px #ff1a8c;
+}
+
+/* Profile */
+img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #ff66b2;
+  margin-bottom: 15px;
+}
+
+/* Title Glow */
+.glow {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff99cc;
+  animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 5px #ff66b2; }
+  to { text-shadow: 0 0 20px #ff4da6, 0 0 35px #ff99cc; }
+}
+
+/* Button */
+button {
+  margin-top: 20px;
+  background: linear-gradient(45deg, #ff99cc, #ff66b2);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  transition: 0.3s;
+  box-shadow: 0 0 15px #ff66b2;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Output Text */
+#output {
+  margin-top: 25px;
+  font-size: 15px;
+  color: #ffffff;
+  min-height: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #ff99cc;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+  <img src="https://files.catbox.moe/dx9or2.jpg" alt="Profile">
+
+  <div class="glow">
+    WEBSITE INI DIBUAT OLEH AI DENGAN IDE MOD
+  </div>
+
+  <button onclick="kataImut()">Klik Aku 💖</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+const kata = [
+"Kamu lucu banget hari ini 🐰",
+"Semoga harimu sehangat matahari pagi 🌞",
+"Jangan lupa minum air yaa 💧",
+"Kalau capek, istirahat dulu ya 🌸",
+"Kamu lebih keren dari yang kamu kira ",
+"Senyum kamu manis banget 😊",
+"Hari ini pasti ada hal kecil yang bikin kamu bahagia ✨",
+"Kamu nggak sendirian kok ",
+"Langit aja cantik, apalagi kamu ☁️",
+"Terima kasih sudah jadi diri kamu 🌷",
+"Besok pasti lebih cerah 💫",
+"Kamu itu spesial banget 🎀",
+"Semoga tidurmu nanti nyenyak 🌙",
+"Hal baik sedang menuju kamu 💖",
+"Tetap semangat yaa walau pelan 🌸",
+"Kamu itu menggemaskan tau nggak 🐣",
+"Dunia lebih indah kalau kamu senyum 🌼",
+"Semoga harimu penuh hal manis 🍭",
+"Kamu itu cukup, selalu cukup "
+];
+
+function kataImut() {
+  const random = kata[Math.floor(Math.random() * kata.length)];
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  typeWriter(output, random, 0);
+}
+
+/* Typewriter */
+function typeWriter(element, text, i) {
+  if (i < text.length) {
+    element.innerHTML += text.charAt(i);
+    setTimeout(function() {
+      typeWriter(element, text, i + 1);
+    }, 45);
+  }
+}
+</script>
+
+</body>
+</html>
