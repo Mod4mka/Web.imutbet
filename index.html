@@ -17,7 +17,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Background GIF */
+/* Background TETAP */
 body::before {
   content: "";
   position: fixed;
@@ -27,7 +27,6 @@ body::before {
   z-index: -2;
 }
 
-/* Overlay */
 body::after {
   content: "";
   position: fixed;
@@ -37,16 +36,14 @@ body::after {
   z-index: -1;
 }
 
-/* Container 9:16 */
 .wrapper {
   width: 360px;
-  height: 640px; /* 9:16 ratio */
+  height: 640px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Neon Glass Card */
 .card {
   width: 90%;
   background: rgba(255,255,255,0.08);
@@ -61,16 +58,15 @@ body::after {
     0 0 40px #ff1a8c;
 }
 
-/* Profile */
-img {
+img.profile {
   width: 110px;
   height: 110px;
   border-radius: 50%;
   border: 3px solid #ff66b2;
   margin-bottom: 15px;
+  object-fit: cover;
 }
 
-/* Title Glow */
 .glow {
   font-size: 18px;
   font-weight: bold;
@@ -83,7 +79,6 @@ img {
   to { text-shadow: 0 0 20px #ff4da6, 0 0 35px #ff99cc; }
 }
 
-/* Button */
 button {
   margin-top: 20px;
   background: linear-gradient(45deg, #ff99cc, #ff66b2);
@@ -101,70 +96,101 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* Output */
 #output {
-  margin-top: 25px;
+  margin-top: 20px;
   font-size: 14px;
   color: #ffffff;
-  min-height: 40px;
+  min-height: 50px;
   font-weight: bold;
   text-shadow: 0 0 10px #ff99cc;
 }
-</style>
 
+.effect {
+  margin-top: 15px;
+  width: 120px;
+  display: none;
+}
+</style>
 </head>
+
 <body>
 
 <div class="wrapper">
   <div class="card">
 
-    <img src="https://files.catbox.moe/dx9or2.jpg" alt="Profile">
+    <!-- FOTO PROFIL DIGANTI -->
+    <img class="profile" src="https://files.catbox.moe/dd17wa.gif" alt="Profile">
 
     <div class="glow">
-      WEBSITE INI DIBUAT OLEH AI DENGAN IDE MOD
+      WEBSITE INI DIBUAT DENGAN IDE MOD 🌟 
     </div>
 
-    <button onclick="kataImut()">Klik Aku 💖</button>
+    <button onclick="kataImut()">Klik Aku 💕</button>
 
     <div id="output"></div>
+
+    <!-- GIF EFEK -->
+    <img id="effect1" class="effect" src="https://files.catbox.moe/aptqc7.gif">
+    <img id="effect2" class="effect" src="https://files.catbox.moe/tnl2yx.gif">
 
   </div>
 </div>
 
 <script>
-const kata = [
-"Kamu lucu banget hari ini 🐰",
-"Semoga harimu sehangat matahari pagi 🌞",
-"Jangan lupa minum air yaa 💧",
-"Kalau capek, istirahat dulu ya 🌸",
-"Kamu lebih keren dari yang kamu kira 💕",
-"Senyum kamu manis banget 😊",
-"Hari ini pasti ada hal kecil yang bikin kamu bahagia ✨",
-"Kamu nggak sendirian kok 🤍",
-"Langit aja cantik, apalagi kamu ☁️",
-"Terima kasih sudah jadi diri kamu 🌷",
-"Besok pasti lebih cerah 💫",
-"Kamu itu spesial banget 🎀",
-"Semoga tidurmu nanti nyenyak 🌙",
-"Hal baik sedang menuju kamu 💖",
-"Tetap semangat yaa walau pelan 🌸",
-"Kamu itu menggemaskan tau nggak 🐣",
-"Dunia lebih indah kalau kamu senyum 🌼",
-"Semoga harimu penuh hal manis 🍭",
-"Kamu itu cukup, selalu cukup 🤍"
+let kata = [
+"Kamu itu gemes banget tauu 🐰🌟",
+"Kalau dunia lagi capek, kamu jangan ya 🌸",
+"Kamu secantik senja pink neon 🌅✨",
+"Senyummu bisa bikin hari jadi cerah ☀️",
+"Kamu lucu tanpa usaha loh 🐣",
+"Hari ini kamu glowing banget 💎",
+"Kamu itu manis kayak permen kapas 🍭",
+"Semoga semua hal baik datang ke kamu 🌷",
+"Kamu itu versi terbaik dari dirimu ",
+"Jangan overthinking yaa, kamu aman ",
+"Langit aja kalah cantik sama kamu ☁️",
+"Kamu berharga banget jangan lupa ",
+"Semangat yaa pelan-pelan juga gapapa 🌼",
+"Kamu tuh bikin dunia lebih warna-warni 🎨",
+"Aku bangga sama kamu 🥹",
+"Kamu lucu level maksimal 🐻",
+"Hari ini wajib bahagia yaa 🎀",
+"Kalau capek istirahat, bukan menyerah 🌙",
+"Kamu itu cukup, selalu cukup "
 ];
 
+let sudahKeluar = [];
+
 function kataImut() {
-  const random = kata[Math.floor(Math.random() * kata.length)];
+  if (kata.length === 0) {
+    document.getElementById("output").innerHTML = "Semua kata manis sudah kamu baca 💖✨";
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * kata.length);
+  const text = kata.splice(randomIndex, 1)[0];
+
   const output = document.getElementById("output");
   output.innerHTML = "";
-  typeWriter(output, random, 0);
+  typeWriter(output, text, 0);
+
+  // tampilkan efek gif
+  const e1 = document.getElementById("effect1");
+  const e2 = document.getElementById("effect2");
+
+  e1.style.display = "block";
+  e2.style.display = "block";
+
+  setTimeout(() => {
+    e1.style.display = "none";
+    e2.style.display = "none";
+  }, 3000);
 }
 
 function typeWriter(element, text, i) {
   if (i < text.length) {
     element.innerHTML += text.charAt(i);
-    setTimeout(function() {
+    setTimeout(() => {
       typeWriter(element, text, i + 1);
     }, 40);
   }
